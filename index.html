@@ -40,6 +40,7 @@
 
     msg.textContent = "";
     imgwrap.innerHTML = "";
+
 const entry = codes[c];
 
 if (!entry) {
@@ -49,11 +50,10 @@ if (!entry) {
 
 msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
 
-const img = document.createElement("Img");
+const img = document.createElement("img");
 img.src = entry.Img;          // <- importante: entry.img
 img.alt = "Luxury box";
-imgwrap.appendChild(Img);
-    
+imgwrap.appendChild(img);    
   
     
   });
