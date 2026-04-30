@@ -41,18 +41,16 @@
     msg.textContent = "";
     imgwrap.innerHTML = "";
 
-    const imgPath = codes[c];
+    const entry = codes[c];
 
-    if (!imgPath) {
-      msg.textContent = "Código inválido. Revisa y prueba otra vez.";
-      return;
-    }
+if (!entry) {
+  msg.textContent = "Codice non valido. Controlla e riprova.";
+  return;
+}
 
-    msg.textContent = "Ciao, il tuo Luxury Box è stato inviato da:";
-    const img = document.createElement("img");
-    img.src = imgPath;
-    img.alt = "Imagen";
-    imgwrap.appendChild(img);
+msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
+const img = document.createElement("img");
+img.src = entry.img;
   }
 
   document.getElementById("btn").addEventListener("click", show);
