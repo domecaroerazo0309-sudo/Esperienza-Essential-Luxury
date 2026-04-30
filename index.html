@@ -49,18 +49,12 @@ if (!entry) {
 
 msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
 
-const img = document.createElement("img");
-img.src = entry.img;      // <- importante: entry.img
-    const img = document.createElement("img");
-img.src = entry.img;
-
-img.onerror = () => {
-  msg.textContent = `Non riesco a caricare l'immagine: ${entry.img}`;
-};
-
-imgwrap.appendChild(img);
+const img = document.createElement("Img");
+img.src = entry.Img;          // <- importante: entry.img
 img.alt = "Luxury box";
-imgwrap.appendChild(img);
+imgwrap.appendChild(Img);
+    
+  
     
   });
 </script>
