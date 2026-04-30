@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="it">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,14 +10,14 @@
     button { padding: 10px 14px; margin-top: 10px; cursor: pointer; }
     .msg { margin-top: 14px; }
     img { margin-top: 18px; max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 8px; }
-    .hint { color: #666; font-size: 14px; }
   </style>
 </head>
-<body>
-  <h2>Chi lo invia? </h2>
-  <p class="hint">Scoprilo.</p>
 
-  <input id="code" placeholder="Ej: 12345" />
+<body>
+  <h2>Chi lo invia?</h2>
+  <p>Scoprilo.</p>
+
+  <input id="code" placeholder="Inserisci il codice" />
   \
 
   <button id="btn">Ver imagen</button>
@@ -25,38 +25,44 @@
   <div id="msg" class="msg"></div>
   <div id="imgwrap"></div>
 
-<script>
-  // 1) MAPA: código -> archivo de imagen
-  // Cambia los códigos y nombres de archivo por los tuyos
-  const codes = {
-    "12345": { img: "img/IMG_8785.jpeg",sender: "Daniel" },
-    "67890": { img: "img/IMG_8834.png",sender: "Carolina" }
-  };
+  <script>
+    // Código -> imagen + sender
+    const codes = {
+      "12345": { img: "img/IMG_8785.jpeg", sender: "Carolina" },
+      "67890": { img: "img/IMG_
+    };
 
-  function show() {
-    const c = document.getElementById("code").value.trim();
-    const msg = document.getElementById("msg");
-    const imgwrap = document.getElementById("imgwrap");
+    function show() {
+      const c = document.getElementById("code").value.trim();
+      const msg = document.getElementById("msg");
+      const imgwrap = document.getElementById("imgwrap");
 
-    msg.textContent = "";
-    imgwrap.innerHTML = "";
+      msg.textContent = "";
+      imgwrap.innerHTML = "";
 
-const entry = codes[c];
+      const entry = codes[c];
 
-if (!entry) {
-  msg.textContent = "Codice non valido. Controlla e riprova.";
-  return;
-}
+      if (!entry) {
+        msg.textContent = "Codice non valido. Controlla e riprova.";
+        return;
+      }
 
-msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
+      msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
 
-const img = document.createElement("img");
-img.src = entry.img;          // <- importante: entry.img
-img.alt = "Luxury box";
-imgwrap.appendChild(img);     
-  
-    
-  });
-</script>
+      const img = document.createElement("img");
+      img.src = entry.img;
+
+      img.onerror = () => {
+        msg.textContent = `Non riesco a caricare l'immagine: ${entry.img}`;
+      };
+
+      imgwrap.appendChild(img);
+    }
+
+    document.getElementById("btn").addEventListener("click", show);
+    document.getElementById("code").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") show();
+    });
+  </script>
 </body>
 </html>
