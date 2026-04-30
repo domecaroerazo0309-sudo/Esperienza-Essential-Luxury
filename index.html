@@ -40,8 +40,7 @@
 
     msg.textContent = "";
     imgwrap.innerHTML = "";
-
-    const entry = codes[c];
+const entry = codes[c];
 
 if (!entry) {
   msg.textContent = "Codice non valido. Controlla e riprova.";
@@ -49,13 +48,12 @@ if (!entry) {
 }
 
 msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
-const img = document.createElement("img");
-img.src = entry.img;
-  }
 
-  document.getElementById("btn").addEventListener("click", show);
-  document.getElementById("code").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") show();
+const img = document.createElement("img");
+img.src = entry.img;          // <- importante: entry.img
+img.alt = "Luxury box";
+imgwrap.appendChild(img);
+    
   });
 </script>
 </body>
