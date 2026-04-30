@@ -29,8 +29,8 @@
   // 1) MAPA: código -> archivo de imagen
   // Cambia los códigos y nombres de archivo por los tuyos
   const codes = {
-    "12345": { img: "img/IMG_8785.jpeg",sender: "Daniel"},
-    "67890": { img: "img/IMG_8834.jpeg",sender: "Carolina"}
+    "12345": { img: "img/IMG_8785.jpeg",sender: "Daniel" },
+    "67890": { img: "img/IMG_8834.png",sender: "Carolina" }
   };
 
   function show() {
@@ -49,11 +49,8 @@ if (!entry) {
 }
 
 msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
-
 const img = document.createElement("img");
-img.src = entry.img;          // <- importante: entry.img
-img.alt = "Luxury box";
-imgwrap.appendChild(img);    
+img.src = entry.img;   
   
     
   });
