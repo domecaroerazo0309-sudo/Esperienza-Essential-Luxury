@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-  <h2>Introduce tu código</h2>
+  <h2>Chi lo invia? Scoprilo</h2>
   <p class="hint">Si el código es correcto, se mostrará la imagen.</p>
 
   <input id="code" placeholder="Ej: 12345" />
@@ -49,8 +49,11 @@ if (!entry) {
 }
 
 msg.textContent = `Ciao, il tuo luxury box è stato inviato da: ${entry.sender}`;
+
 const img = document.createElement("img");
-img.src = entry.img;   
+img.src = entry.img;          // <- importante: entry.img
+img.alt = "Luxury box";
+imgwrap.appendChild(img);     
   
     
   });
